@@ -3,8 +3,8 @@ import thread, time
 from TCP_Client import TCP_Client
 from TCP_Server import TCP_Server
 from PKI_Manual import keyGeneration, keyTostr
-
-
+import json
+Sender = '163.239.200.188'
 thread.start_new_thread(TCP_Server, ())
 time.sleep(1)
 
@@ -15,6 +15,15 @@ while True:
     input = raw_input('<')
     if(input =='send'):
         HOST = raw_input('connect ip : ')
-        thread.start_new_thread(TCP_Client, (HOST, privateKey, publicKey,))
+        amount = raw_input('amount : ')
+        msg = raw_input('msg : ')
+        bitcoin = {
+            'recv': HOST,
+            'sender': Sender,
+            'amount': amount,
+            'msg': msg
+        }
+        jsonBit = json.dumps(bitcoin)
+        thread.start_new_thread(TCP_Client, (HOST, privateKey, publicKey,jsonBit,))
         time.sleep(1)
 
