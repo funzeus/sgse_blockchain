@@ -4,7 +4,7 @@ from time import ctime
 from PKI_Manual import dataDecode, strTokey
 
 def TCP_Server():
-    HOST='163.239.200.183'
+    HOST='163.239.200.188'
     PORT=2001
     BUFSIZ=1024
     ADDR=(HOST, PORT)
@@ -23,6 +23,9 @@ def TCP_Server():
             recvData = data.split(' ')
             if len(recvData) > 1:
                 recvPublicKey = strTokey(recvData[1])
+
+            print "Data :  " + recvData[0]
+            print "Key : " + recvData[1]
 
             decodedData = dataDecode(recvData[0], recvPublicKey)
 
