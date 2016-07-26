@@ -23,12 +23,10 @@ def TCP_Server():
             recvData = data.split(' ')
             if len(recvData) > 1:
                 recvPublicKey = strTokey(recvData[1])
-
-            print "Data :  " + recvData[0]
-            print "Key : " + recvData[1]
-            print "Time : " + recvData[2] + recvData[3]
-
-            decodedData = dataDecode(recvData[0], recvPublicKey)
+                print "Data :  " + recvData[0]
+                print "Key : " + recvData[1]
+                print "Time : " + recvData[2] + ' ' + recvData[3]
+                decodedData = dataDecode(recvData[0], recvPublicKey)
 
         tcpCliSock.close()
     tcpSerSock.close()
