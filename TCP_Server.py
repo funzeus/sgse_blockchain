@@ -26,7 +26,7 @@ def TCP_Server():
 
             print "Data :  " + recvData[0]
             print "Key : " + recvData[1]
-            print "Time : " + recvData[2]
+            print "Time : " + recvData[2] + recvData[3]
 
             decodedData = dataDecode(recvData[0], recvPublicKey)
 
