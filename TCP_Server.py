@@ -1,15 +1,15 @@
 #TCP Server
 from socket import *
 from time import ctime
-import PKI_Manual
+from PKI_Manual import dataDecode, strTokey
 
 def TCP_Server():
     HOST='163.239.200.183'
     PORT=2001
-    BUFSIZ=10
-    ADDR=(HOST,PORT)
+    BUFSIZ=1024
+    ADDR=(HOST, PORT)
 
-    tcpSerSock = socket(AF_INET,SOCK_STREAM)
+    tcpSerSock = socket(AF_INET, SOCK_STREAM)
     tcpSerSock.bind(ADDR)
     tcpSerSock.listen(5)
 
@@ -20,8 +20,14 @@ def TCP_Server():
 
         while True:
             data = tcpCliSock.recv(BUFSIZ)
+            recvData = data.split(' ')
+            if len(recvData) > 1:
+                recvPublicKey = strTokey(recvData[1])
+
+            decodedData = dataDecode(recvData[0], recvPublicKey)
+
             if tcpCliSock.send('[%s] %s' %(ctime(), data)):
-                print data
+                print decodedData
                 break
 
         tcpCliSock.close()

@@ -20,7 +20,7 @@ def TCP_Client(HOST, PrivateKey, PublicKey):
 
         #Encryption
         encryptMsg = dataEncode(data, PrivateKey)
-        encodedMsg = encryptMsg + PublicKey
+        encodedMsg = encryptMsg +' '+ PublicKey
 
         if tcpCliSock.send(encodedMsg):
             break

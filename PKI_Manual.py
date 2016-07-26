@@ -134,7 +134,7 @@ def strTokey(keyStr):
 #
 # def main():
 #     pubkey, privkey = keyGeneration(2 ** 256)
-#     msg = 'Blockchain'
+#     msg = 'Blockchain is a osdkfpsdifpi'
 #     h = dataEncode(msg, privkey, True)
 #     p = dataDecode(h, pubkey, True)
 #     print('-' * 20)

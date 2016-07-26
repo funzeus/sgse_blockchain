@@ -15,6 +15,6 @@ while True:
     input = raw_input('<')
     if(input =='send'):
         HOST = raw_input('connect ip : ')
-        thread.start_new_thread(TCP_Client, (HOST, privateKey,publicKey,))
+        thread.start_new_thread(TCP_Client, (HOST, privateKey, publicKey,))
         time.sleep(1)
 
