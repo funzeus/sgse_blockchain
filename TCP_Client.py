@@ -2,14 +2,14 @@
 from socket import *
 import PKI_Module
 import pickle
+from PKI_Manual import dataEncode
 
-def TCP_Client(HOST):
+def TCP_Client(HOST, PrivateKey, PublicKey):
     PORT = 2001
     BUFSIZ=1024
     ADDR = (HOST, PORT)
     tcpCliSock = socket(AF_INET, SOCK_STREAM)
 
-    pki = PKI_Module.pkiModule(1024)
 
     print "Before connect"
     tcpCliSock.connect(ADDR)
@@ -18,12 +18,11 @@ def TCP_Client(HOST):
     while True:
         data = "dataaa"
 
-        # PKI module
-        encryptData = pki.dataEncryption(data)
-        temp = pickle.dump(pki.pubKey)
-        print temp
-        if tcpCliSock.send(temp):
-            tcpCliSock.send(encryptData)
+        #Encryption
+        encryptMsg = dataEncode(data, PrivateKey)
+        encodedMsg = encryptMsg + PublicKey
+
+        if tcpCliSock.send(encodedMsg):
             break
 
     tcpCliSock.close()

@@ -1,13 +1,5 @@
 from OpenSSL import crypto
 from Crypto.PublicKey import RSA
-from Crypto import Random
-
-'''
-TODO:
-    1. 데이터 주고 받을 때 퍼블릭키랑 같이 전송할 것.
-    2. 리시브한 퍼블릭키로 복호화하는 기능 추가.
-'''
-
 
 # git Test
 
@@ -29,14 +21,6 @@ class pkiModule:
         open('PublicKey.pem', 'w').write(crypto.dump_publickey(crypto.FILETYPE_PEM, pkey))
         self.priKey = RSA.importKey(open('PublicKey.pem').read())
         self.pubKey = RSA.importKey(open('PrivateKey.pem').read())
-
-
-
-    # def generateKeyPair(self, keyType, bits):
-    #     pkey = crypto.PKey()
-    #     pkey.generate_key(keyType, bits)
-    #     open('PrivateKey.pem', 'w').write(crypto.dump_privatekey(crypto.FILETYPE_PEM), pkey)
-    #     open('PublicKey.pem', 'w').write(crypto.dump_publickey(crypto.FILETYPE_PEM), pkey)
 
     def dataEncryption(self, msg):
         emsg = self.priKey.encrypt(msg, 'x')[0]
