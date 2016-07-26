@@ -26,12 +26,9 @@ def TCP_Server():
 
             print "Data :  " + recvData[0]
             print "Key : " + recvData[1]
+            print "Time : " + recvData[2]
 
             decodedData = dataDecode(recvData[0], recvPublicKey)
-
-            if tcpCliSock.send('[%s] %s' %(ctime(), data)):
-                print decodedData
-                break
 
         tcpCliSock.close()
     tcpSerSock.close()
