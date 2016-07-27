@@ -21,7 +21,7 @@ def TCP_Thread():
             msg = raw_input('msg : ')
             bitcoin = {
                 'recv': HOST,
-                'sender': publicKey,
+                'sender': Sender,
                 'amount': amount,
                 'msg': msg
             }

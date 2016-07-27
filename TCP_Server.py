@@ -30,8 +30,8 @@ def TCP_Server():
                 print "Key : " + recvData[1]
                 print "Time : " + recvData[2]
                 decodedData = dataDecode(recvData[0], recvPublicKey)
-                dict = json.loads(decodedData)
-                print dict['amount']
+                #dict = json.loads(decodedData)
+                #print dict['amount']
 
 
         tcpCliSock.close()

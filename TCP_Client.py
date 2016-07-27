@@ -7,7 +7,7 @@ from PKI_Manual import dataEncode
 import json
 def TCP_Client(HOST, PrivateKey, PublicKey, data):
     PORT = 2001
-    BUFSIZ=1024
+    BUFSIZ=4000
     ADDR = (HOST, PORT)
     tcpCliSock = socket(AF_INET, SOCK_STREAM)
 
