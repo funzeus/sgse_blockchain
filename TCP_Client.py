@@ -5,7 +5,6 @@ import PKI_Module
 import pickle
 from PKI_Manual import dataEncode
 import json
-
 def TCP_Client(HOST, PrivateKey, PublicKey, data):
     PORT = 2001
     BUFSIZ=1024
@@ -19,7 +18,6 @@ def TCP_Client(HOST, PrivateKey, PublicKey, data):
 
     while True:
         encryptMsg = dataEncode(data, PrivateKey)
-        print data
         encodedMsg = encryptMsg +'\n'+ PublicKey + '\n' + time.strftime("%Y-%m-%d %H:%M:%S",time.gmtime())
 
         if tcpCliSock.send(encodedMsg):

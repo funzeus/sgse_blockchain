@@ -1,12 +1,15 @@
 #TCP Server
 from socket import *
 from time import ctime
+import json
 from PKI_Manual import dataDecode, strTokey
+
+
 
 def TCP_Server():
     HOST='163.239.200.188'
     PORT=2001
-    BUFSIZ=2000
+    BUFSIZ=4000
     ADDR=(HOST, PORT)
 
     tcpSerSock = socket(AF_INET, SOCK_STREAM)
@@ -27,8 +30,10 @@ def TCP_Server():
                 print "Key : " + recvData[1]
                 print "Time : " + recvData[2]
                 decodedData = dataDecode(recvData[0], recvPublicKey)
+                dict = json.loads(decodedData)
+                print dict['amount']
+
 
         tcpCliSock.close()
     tcpSerSock.close()
-
 
